@@ -1,6 +1,7 @@
 package com.web.service;
 
 import com.web.entity.User;
+import com.web.utils.Md5Util;
 
 import java.util.List;
 
