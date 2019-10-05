@@ -197,21 +197,8 @@
 <body>
 <!-- 顶部导航 -->
 <header>
-  <div>
-    <!-- 导航 -->
-    <ul class="nav">
-      <li><a href="#">首页</a></li>
-      <li><a href="#">畅销榜</a></li>
-      <li><a href="#">五星书</a></li>
-      <li><a href="#">新上架</a></li>
-      <li><a href="#">出版社</a></li>
-      <li><a href="#">批发</a></li>
-      <li><a href="#">话题</a></li>
-      <li><a href="#">设置</a></li>
-    </ul>
-  </div>
-  <div class="user-info">
-    <i class="iconfont" style="color: #333333;font-size: 30px">&#xe619;</i>
+  <div id="top">
+    <jsp:include page="top.jsp"/>
   </div>
 </header>
 <!-- 搜索区 -->
