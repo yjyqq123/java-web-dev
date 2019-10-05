@@ -13,6 +13,7 @@
 <head>
   <meta charset="UTF-8">
   <title>首页</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
   <style type="text/css">
     *{
       margin: 0;
@@ -271,7 +272,18 @@
 </div>
 <!-- 脚注区 -->
 <footer>
-  <p>中国图书网</p>
+  <ul>
+    <li>京信市监发[2002]122号</li>
+    <li>http://www.bookschina.com/,</li>
+    <li>营业执照</li>
+    <li>中国图书网</li>
+  </ul>
+  <ul>
+    <li>正品保证</li>
+    <li>精品团购</li>
+    <li>尾货图书</li>
+    <li>全国快递</li>
+  </ul>
 </footer>
 </body>
 </html>

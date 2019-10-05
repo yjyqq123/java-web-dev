@@ -5,248 +5,123 @@
   Time: 20:27
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.web.Book" %>
+<%@ page import="com.web.entity.Book" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>首页</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
   <style type="text/css">
-    *{
-      margin: 0;
-      padding: 0;
+    h2, h3 {
+      color: rgb(73, 73, 73);
     }
-    @font-face {
-      font-family: 'iconfont';  /* project id 1432479 */
-      src: url('//at.alicdn.com/t/font_1432479_3euznvfn9up.eot');
-      src: url('//at.alicdn.com/t/font_1432479_3euznvfn9up.eot?#iefix') format('embedded-opentype'),
-      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.woff2') format('woff2'),
-      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.woff') format('woff'),
-      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.ttf') format('truetype'),
-      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.svg#iconfont') format('svg');
-    }
-    .iconfont{
-      font-family:"iconfont" !important;
-      font-size:16px;font-style:normal;
-      -webkit-font-smoothing: antialiased;
-      -webkit-text-stroke-width: 0.2px;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    body{
-      color: #333;
-    }
-    header{
-      height: 60px;
-      background-color: rgb(161, 136, 127);
-      display: flex;
-      box-shadow: #aaaaaa;
-      /* 垂直居中 */
-      align-items: center;
-      /* 水平居中 */
-      justify-content: space-between;
-      padding-right: 10px;
-      padding-right: 10px;
-    }
-    .nav{
-      flex: 0 0 50%;
-      list-style: none;
-      display: flex;
-    }
-    .nav li{
-      margin-left: 30px;
-      margin-right: 30px;
-      width: 50px;
-    }
-    .user-info{
-      display: flex;
-      padding-right: 20px;
-      flex-direction: row-reverse;
-    }
-    .nav li a{
-      text-decoration: none;
-      color: #eee;
-    }
-    .nav li a:hover{
-      color: #fff;
-    }
-    /* 搜索区样式 */
-    .search-wrap{
-      height: 60px;
-      background-color: rgb(224, 224, 224);
+
+    #search {
+      height: 80px;
+      background-color: rgb(246, 246, 241);
       display: flex;
       align-items: center;
-      padding-left: 10%;
+      padding-left: 8%;
       margin-bottom: 10px;
     }
-    .input-box{
-      width: 350px;
+
+    .search-input {
+      flex: 0 0 40%;
       height: 35px;
-      border: 1px solid #eee;
-      border-radius: 5px;
-      margin-left: 10px;
-    }
-    .container{
-      width: 85%;
-      margin: 0 auto;
-      /* height: 600px; */
-      background-color: rgb(188, 170, 164);
-      display: flex;
-      padding: 5px 5px 5px 5px;
-    }
-    .left{
-      flex: 0 0 66%;
-      height: 100%;
       background-color: #fff;
-      padding: 10px 10px 10px 10px;
+      border: none;
+      border-radius: 3px;
+      margin-left: 50px;
     }
-    .right{
-      flex: 0 0 32%;
-      height: 100%;
-      margin-left: 5px;
-      background-color: #FFFFFF;
-    }
-    .right a{
-      text-decoration: none;
-      color:#000;
-    }
-    .right a:hover{
-      color:#aaa;
-    }
-    .row{
-      display: flex;
-      /* 自动换行 */
-      flex-wrap: wrap;
-      padding: 5px 5px 5px 5px;
-    }
-    .column{
-      flex: 0 0 18%;
-      height: 250px;
-      background-color: #FFFFFF;
-      border-radius: 10px;
-      margin: 5px 5px 5px 5px;
-      text-align: center;
-    }
-    footer{
-      height: 100px;
-      background-color: #aaa;
+
+    .search-btn {
+      width: 35px;
+      height: 35px;
+      background-color: rgb(155, 154, 143);
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .avatar{
-      border-top-left-radius: 5%;
-      border-top-right-radius: 5%;
-      margin-top: 5px;
-      margin-bottom: 5px;
+
+    .search-btn img {
+      width: 50%;
+      height: 50%;
+    }
+
+    .card {
+      height: 180px;
+      margin: 20px 5px 20px 5px;
+    }
+
+    .card img {
       width: 100%;
-      height: 70%;
+      height: 90%;
     }
-    .description{
-      width:80%;
-      margin:0 auto;
-      font-size:13px;
-      line-heignt:25px;
+
+    .card p {
+      font-size: 13px;
+      color: #9b9b9b;
     }
-    .button{
-      width: 35px;
-      height: 35px;
-      background-color: #FFFFFF;
-      border-radius: 5px;
-      box-shadow: #333333;
-      font-size: 16px;
-      outline: none;
-      border: none;
+
+    .col-4 img {
+      margin: 10px 5px 20px 5px;
+      width: 80%;
     }
-    .circle-bin{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      /*阴影效果*/
-      box-shadow: #aaaaaa;
-      outline: none;
-      border: none;
-    }
-    .row-1{
-      display: flex;
-      flex-direction:column;
-      padding:5px 5px 5px 5px;
-    }
-    .column1{
-      width:95%;
-      height:100px;
-      background-color: #FFFFFF;
-      margin:5px 5px 5px 5px;
-    }
-    img{
-      border-top-left-radius: 5%;
-      border-top-right-radius: 5%;
-      margin-top: 5px;
-      margin-bottom: 5px;
-      width: 100%;
-      height: 70%;
-      cursor: pointer;
-      transition: all 0.6s;
-    }
-    img:hover {
-      transform: scale(1.1);
+
+    hr {
+      width: 90%;
+      color: #eee;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-<!-- 顶部导航 -->
-<header>
-  <div>
-    <!-- 导航 -->
-    <ul class="nav">
-      <li><a href="#">首页</a></li>
-      <li><a href="#">畅销榜</a></li>
-      <li><a href="#">五星书</a></li>
-      <li><a href="#">新上架</a></li>
-      <li><a href="#">出版社</a></li>
-      <li><a href="#">批发</a></li>
-      <li><a href="#">话题</a></li>
-      <li><a href="#">设置</a></li>
-    </ul>
-  </div>
-  <div class="user-info">
-    <i class="iconfont" style="color: #333333;font-size: 30px">&#xe619;</i>
-  </div>
-</header>
-<!-- 搜索区 -->
-<div class="search-wrap">
-  <h2>读书时刻</h2>
-  <input type="text" placeholder="输入要搜索的内容" class="input-box">
-  <button type="button" class="button">
-    <a href="#"><i class="iconfont" style="color: #333333;font-size: 14px">&#xe600;</i></a>
-  </button>
-
+<%
+  List<Book> bookList = (List<Book>) request.getAttribute("bookList");
+%>
+<%--使用jsp的include动作，将top.jsp页面包含进来，这个顶部导航可以给各个页面共享--%>
+<div id="top">
+  <jsp:include page="top.jsp"/>
 </div>
-<div class="container">
-  <!-- 主题内容区 -->
-  <div class="left">
-    <h2>好书精选</h2>
-    <hr>
-    <%
-      List<Book> bookList = (List<Book>) request.getAttribute("bookList");
-      pageContext.setAttribute("size",bookList.size());
-    %>
-    <div class="row">
-      <%
-        for(Book book:bookList){
-          pageContext.setAttribute("book",book);
-      %>
-      <div class="column">
-        <img src="image/${book.cover}" alt="">
-        <p>${book.name}</p>
-        <p>${book.author}</p>
-      </div>
-      <%
-        }
-      %>
-    </div>
+
+<%--搜索区--%>
+<div id="search">
+  <h2>读书时刻</h2>
+  <input type="text" placeholder="书名、作者、ISBN" class="search-input">
+  <div class="search-btn">
+    <img src="images/search.png" alt="">
   </div>
+</div>
+
+<%--主体内容区--%>
+<div class="container">
+  <div class="row">
+    <%--左侧2/3主体部分--%>
+    <div class="col-8">
+      <h3>新书速递</h3>
+      <hr>
+      <div class="row">
+        <%--遍历图书数据集合，将每个图书对象放入页面对象--%>
+        <%
+          for (Book book : bookList) {
+            pageContext.setAttribute("book", book);
+        %>
+        <%--引用col-2表示每行显示5本，再追加card细节样式--%>
+        <div class="col-2 card">
+          <%--点击每本图书封面图，地址栏跳转为/detail/id,进入图书详情Servlet--%>
+          <a href="${pageContext.request.contextPath}/detail/${book.id}">
+            <img src="images/${book.cover}" alt="">
+          </a>
+          <p style="color: rgb(51, 119, 178)">${book.name}</p>
+          <p>${book.author}</p>
+        </div>
+        <%
+          }
+        %>
+      </div>
+    </div>
   <div class="right">
     <div class="row-1">
       <div class="column1">
@@ -284,7 +159,18 @@
 </div>
 <!-- 脚注区 -->
 <footer>
-  <p>中国图书网</p>
+  <ul>
+    <li>京信市监发[2002]122号</li>
+    <li>http://www.bookschina.com/,</li>
+    <li>营业执照</li>
+    <li>中国图书网</li>
+  </ul>
+  <ul>
+    <li>正品保证</li>
+    <li>精品团购</li>
+    <li>尾货图书</li>
+    <li>全国快递</li>
+  </ul>
 </footer>
 </body>
 </html>
