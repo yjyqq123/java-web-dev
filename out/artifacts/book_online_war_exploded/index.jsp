@@ -11,117 +11,230 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>首页</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
   <style type="text/css">
-    h2, h3 {
-      color: rgb(73, 73, 73);
+    *{
+      margin: 0;
+      padding: 0;
     }
-
-    #search {
-      height: 80px;
-      background-color: rgb(246, 246, 241);
+    @font-face {
+      font-family: 'iconfont';  /* project id 1432479 */
+      src: url('//at.alicdn.com/t/font_1432479_3euznvfn9up.eot');
+      src: url('//at.alicdn.com/t/font_1432479_3euznvfn9up.eot?#iefix') format('embedded-opentype'),
+      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.woff2') format('woff2'),
+      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.woff') format('woff'),
+      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.ttf') format('truetype'),
+      url('//at.alicdn.com/t/font_1432479_3euznvfn9up.svg#iconfont') format('svg');
+    }
+    .iconfont{
+      font-family:"iconfont" !important;
+      font-size:16px;font-style:normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body{
+      color: #333;
+    }
+    header{
+      height: 60px;
+      background-color: rgb(161, 136, 127);
+      display: flex;
+      box-shadow: #aaaaaa;
+      /* 垂直居中 */
+      align-items: center;
+      /* 水平居中 */
+      justify-content: space-between;
+      padding-right: 10px;
+      padding-right: 10px;
+    }
+    .nav{
+      flex: 0 0 50%;
+      list-style: none;
+      display: flex;
+    }
+    .nav li{
+      margin-left: 30px;
+      margin-right: 30px;
+      width: 50px;
+    }
+    .user-info{
+      display: flex;
+      padding-right: 20px;
+      flex-direction: row-reverse;
+    }
+    .nav li a{
+      text-decoration: none;
+      color: #eee;
+    }
+    .nav li a:hover{
+      color: #fff;
+    }
+    /* 搜索区样式 */
+    .search-wrap{
+      height: 60px;
+      background-color: rgb(224, 224, 224);
       display: flex;
       align-items: center;
-      padding-left: 8%;
+      padding-left: 10%;
       margin-bottom: 10px;
     }
-
-    .search-input {
-      flex: 0 0 40%;
+    .input-box{
+      width: 350px;
       height: 35px;
-      background-color: #fff;
-      border: none;
-      border-radius: 3px;
-      margin-left: 50px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      margin-left: 10px;
     }
-
-    .search-btn {
-      width: 35px;
-      height: 35px;
-      background-color: rgb(155, 154, 143);
+    .container{
+      width: 85%;
+      margin: 0 auto;
+      /* height: 600px; */
+      background-color: rgb(188, 170, 164);
+      display: flex;
+      padding: 5px 5px 5px 5px;
+    }
+    .left{
+      flex: 0 0 66%;
+      height: 100%;
+      background-color: #fff;
+      padding: 10px 10px 10px 10px;
+    }
+    .right{
+      flex: 0 0 32%;
+      height: 100%;
+      margin-left: 5px;
+      background-color: #FFFFFF;
+    }
+    .right a{
+      text-decoration: none;
+      color:#000;
+    }
+    .right a:hover{
+      color:#aaa;
+    }
+    .row{
+      display: flex;
+      /* 自动换行 */
+      flex-wrap: wrap;
+      padding: 5px 5px 5px 5px;
+    }
+    .column{
+      flex: 0 0 18%;
+      height: 250px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      margin: 5px 5px 5px 5px;
+      text-align: center;
+    }
+    footer{
+      height: 100px;
+      background-color: #aaa;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
-    .search-btn img {
-      width: 50%;
-      height: 50%;
-    }
-
-    .card {
-      height: 180px;
-      margin: 20px 5px 20px 5px;
-    }
-
-    .card img {
+    .avatar{
+      border-top-left-radius: 5%;
+      border-top-right-radius: 5%;
+      margin-top: 5px;
+      margin-bottom: 5px;
       width: 100%;
-      height: 90%;
+      height: 70%;
     }
-
-    .card p {
-      font-size: 13px;
-      color: #9b9b9b;
+    .description{
+      width:80%;
+      margin:0 auto;
+      font-size:13px;
+      line-heignt:25px;
     }
-
-    .col-4 img {
-      margin: 10px 5px 20px 5px;
-      width: 80%;
+    .button{
+      width: 35px;
+      height: 35px;
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      box-shadow: #333333;
+      font-size: 16px;
+      outline: none;
+      border: none;
     }
-
-    hr {
-      width: 90%;
-      color: #eee;
-      margin-top: 10px;
+    .circle-bin{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      /*阴影效果*/
+      box-shadow: #aaaaaa;
+      outline: none;
+      border: none;
+    }
+    .row-1{
+      display: flex;
+      flex-direction:column;
+      padding:5px 5px 5px 5px;
+    }
+    .column1{
+      width:95%;
+      height:100px;
+      background-color: #FFFFFF;
+      margin:5px 5px 5px 5px;
+    }
+    img{
+      border-top-left-radius: 5%;
+      border-top-right-radius: 5%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 100%;
+      height: 70%;
+      cursor: pointer;
+      transition: all 0.6s;
+    }
+    img:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-<%
-  List<Book> bookList = (List<Book>) request.getAttribute("bookList");
-%>
-<%--使用jsp的include动作，将top.jsp页面包含进来，这个顶部导航可以给各个页面共享--%>
-<div id="top">
-  <jsp:include page="top.jsp"/>
-</div>
-
-<%--搜索区--%>
-<div id="search">
-  <h2>读书时刻</h2>
-  <input type="text" placeholder="书名、作者、ISBN" class="search-input">
-  <div class="search-btn">
-    <img src="images/search.png" alt="">
+<!-- 顶部导航 -->
+<header>
+  <div id="top">
+    <jsp:include page="top.jsp"/>
   </div>
-</div>
+</header>
+<!-- 搜索区 -->
+<div class="search-wrap">
+  <h2>读书时刻</h2>
+  <input type="text" placeholder="输入要搜索的内容" class="input-box">
+  <button type="button" class="button">
+    <a href="#"><i class="iconfont" style="color: #333333;font-size: 14px">&#xe600;</i></a>
+  </button>
 
-<%--主体内容区--%>
+</div>
 <div class="container">
-  <div class="row">
-    <%--左侧2/3主体部分--%>
-    <div class="col-8">
-      <h3>新书速递</h3>
-      <hr>
-      <div class="row">
-        <%--遍历图书数据集合，将每个图书对象放入页面对象--%>
-        <%
-          for (Book book : bookList) {
-            pageContext.setAttribute("book", book);
-        %>
-        <%--引用col-2表示每行显示5本，再追加card细节样式--%>
-        <div class="col-2 card">
-          <%--点击每本图书封面图，地址栏跳转为/detail/id,进入图书详情Servlet--%>
-          <a href="${pageContext.request.contextPath}/detail/${book.id}">
-            <img src="images/${book.cover}" alt="">
-          </a>
-          <p style="color: rgb(51, 119, 178)">${book.name}</p>
-          <p>${book.author}</p>
-        </div>
-        <%
-          }
-        %>
+  <!-- 主题内容区 -->
+  <div class="left">
+    <h2>好书精选</h2>
+    <hr>
+    <%
+      List<Book> bookList = (List<Book>) request.getAttribute("bookList");
+      pageContext.setAttribute("size",bookList.size());
+    %>
+    <div class="row">
+      <%
+        for(Book book:bookList){
+          pageContext.setAttribute("book",book);
+      %>
+      <div class="column">
+        <img src="image/${book.cover}" alt="">
+        <p>${book.name}</p>
+        <p>${book.author}</p>
       </div>
+      <%
+        }
+      %>
     </div>
+  </div>
   <div class="right">
     <div class="row-1">
       <div class="column1">
