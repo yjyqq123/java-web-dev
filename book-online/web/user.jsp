@@ -1,4 +1,11 @@
-<%@ page import="com.bo.entity.User" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: 26416
+  Date: 2019/10/5
+  Time: 15:46
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page import="com.web.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -111,8 +118,8 @@
 </head>
 <body>
 <%
-User user = (User) session.getAttribute("user");
-pageContext.setAttribute("user", user);
+    User user = (User) session.getAttribute("user");
+    pageContext.setAttribute("user", user);
 %>
 
 <%--顶部区域，引入共用的top.jsp页面--%>

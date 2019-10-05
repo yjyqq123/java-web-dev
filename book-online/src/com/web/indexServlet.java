@@ -1,5 +1,7 @@
 package com.web;
 
+import com.web.entity.Book;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
